@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 /* eslint-disable */
 
@@ -17,13 +17,14 @@ const Signup = () => {
 
     const handleChange = ({ currentTarget: input }) => {{
         setData({...data, [input.name]: input.value });
+        //console.log(data);
     }};
 
     const handleSubmit = async (err) => {
         err.preventDefault();
 
         try {
-            const url = "http://localhost:4000/signup";
+            const url = "http://localhost:4000/api/signup";
             const { data: res } = await axios.post(url, data);
             navigate("/login");
             console.log(res.message);
@@ -35,70 +36,99 @@ const Signup = () => {
     }
 
     return (
-              <form onSubmit={handleSubmit}>
+        <div>
+            <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+                <div className="container">
+                    <Link className="navbar-brand" to={'/'}>
+                        Tastee
+                    </Link>
+
+                    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <Link className="nav-link" to={'/login'}>
+                                    Login
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to={'/signup'}>
+                                    Sign up
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <form onSubmit={handleSubmit}>
                 <h3>Sign Up</h3>
         
                 <div className="mb-3">
-                  <label>First name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="First name"
-                    value={data.firstName}
-                    required
-                    onChange={handleChange}
-                  />
+                    <label>First name</label>
+                    <input
+                        type="text"
+                        name="firstName"
+                        className="form-control"
+                        placeholder="First name"
+                        defaultValue={data.firstName}
+                        required
+                        onChange={handleChange}
+                    />
                 </div>
         
                 <div className="mb-3">
-                  <label>Last name</label>
-                  <input 
-                    type="text" 
-                    className="form-control" 
-                    placeholder="Last name" 
-                    value={data.lastName}
-                    required
-                    onChange={handleChange}
-                  />
+                    <label>Last name</label>
+                    <input 
+                        type="text" 
+                        name="lastName"
+                        className="form-control" 
+                        placeholder="Last name" 
+                        defaultValue={data.lastName}
+                        required
+                        onChange={handleChange}
+                    />
                 </div>
         
                 <div className="mb-3">
-                  <label>Email address</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Enter email"
-                    value={data.email}
-                    required
-                    onChange={handleChange}
-                  />
+                    <label>Email address</label>
+                    <input
+                        type="email"
+                        name="email"
+                        className="form-control"
+                        placeholder="Enter email"
+                        defaultValue={data.email}
+                        required
+                        onChange={handleChange}
+                    />
                 </div>
         
                 <div className="mb-3">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Enter password"
-                    value={data.password}
-                    required
-                    onChange={handleChange}
-                  />
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        className="form-control"
+                        placeholder="Enter password"
+                        defaultValue={data.password}
+                        required
+                        onChange={handleChange}
+                    />
                 </div>
 
-                {err && <div> {err} </div>}
+                {err && <div className="error_msg"> {err} </div>}
         
                 <div className="d-grid">
-                  <button type="submit" className="btn btn-primary">
-                    Sign Up
-                  </button>
+                    <button type="submit" className="btn btn-primary">
+                        Sign Up
+                    </button>
                 </div>
         
                 <p className="forgot-password text-right">
-                  Already registered? <a href="/login">Login</a>
+                    Already registered? <a href="/login">Login</a>
                 </p>
-              </form>
-            )
+            </form>
+        </div>
+    )
 }
 
 export default Signup;

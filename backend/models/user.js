@@ -1,31 +1,33 @@
 var mongoose = require('mongoose');
 const Joi = require("joi");
+const jwt = require("jsonwebtoken");
 
 var UserSchema = new mongoose.Schema({
     firstName: {
-        type: String,
-        required: true
+        type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
-        unique: true,
-        required: true
+        unique: true
     },
     password: {
-        type: String,
-        required: true
+        type: String
     }
 });
+
+UserSchema.methods.generateAuthToken = function () {
+    const token = jwt.sign( {_id: this._id }, process.env.TOKEN_SECRET, { expiresIn: "7d" });
+    return token;
+}
 
 const validate = (data) => {
     const schema = Joi.object({
         firstName: Joi.string().required().label("First Name"),
         lastName: Joi.string().required().label("Last Name"),
-        email: Joi.string().required().label("Email"),
+        email: Joi.string().email().required().label("Email"),
         password: Joi.string().required().label("Password"),
     });
     return schema.validate(data);

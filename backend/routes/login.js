@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const { User } = require("../models/user");
 const Joi = require("joi");
 
 module.exports = function (router) {
@@ -7,20 +7,21 @@ module.exports = function (router) {
 
     loginRoute.post(async function (req, res) {
         try {
-            const err = validate(req.body);
-            if (err) {
-                return res.status(400).send({ message: err.details[0].message });
-            }
-
             const user = await User.findOne({ email: req.body.email });
+
             if (user == null) {
-                return res.status(401).send({ mesage: "Invalid Email or Password "});
+                return res.status(401).send({ message: "Invalid Email" });
             }
 
-            res.status(200).send({ message: "Logged in successfully "});
-            
+            if (user.password == req.body.password) {
+                const token = user.generateAuthToken();
+                console.log(token);
+                res.status(200).send({ message: "Logged in successfully", data: token });
+            } else {
+                res.status(404).send({ message: "Incorrect Password" });
+            }
         } catch (err) {
-            res.status(500).sned({ message: "Server error" });
+            res.status(500).send({ message: err.message });
         }
     });
 

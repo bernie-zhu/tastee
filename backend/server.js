@@ -1,16 +1,16 @@
 const express = require("express"),
     router = express.Router(),
     mongoose = require("mongoose"),
+    dotenv = require("dotenv"),
     bodyParser = require("body-parser");
 
 const app = express();
+dotenv.config();
 
 // Use environment defined port or 4000
 var port = process.env.PORT || 4000;
 
-const mongoConnection = "mongodb+srv://ReadAny:1234@fp.yajwv4m.mongodb.net/?retryWrites=true&w=majority"
-
-mongoose.connect(mongoConnection, { useNewUrlParser: true });
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
 
 // Allow CORS so that backend and frontend could be put on different servers
 var allowCrossDomain = function (req, res, next) {
