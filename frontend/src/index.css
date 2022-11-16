@@ -9,7 +9,7 @@ body {
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
 }
-h1,h2,h3,h4,h5,h6,label,span {
+h1,h2,h3,h4,h5,label,span {
   font-weight: 500;
   font-family: 'Fira Sans', sans-serif;
 }
@@ -26,6 +26,7 @@ body, html, .App, #root, .auth-wrapper {
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  align-items: center;
 }
 .auth-inner {
   width: 450px;
@@ -67,6 +68,17 @@ body, html, .App, #root, .auth-wrapper {
   margin: 5px 0;
   font-size: 14px;
   background-color: #f34646;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.success_msg {
+  width: 340px;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 14px;
+  background-color: #198754;
   color: white;
   border-radius: 5px;
   text-align: center;

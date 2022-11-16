@@ -36,7 +36,7 @@ const Signup = () => {
     }
 
     return (
-        <div>
+        <div className="App">
             <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">
                     <Link className="navbar-brand" to={'/'}>
@@ -60,73 +60,77 @@ const Signup = () => {
                 </div>
             </nav>
 
-            <form onSubmit={handleSubmit}>
-                <h3>Sign Up</h3>
-        
-                <div className="mb-3">
-                    <label>First name</label>
-                    <input
-                        type="text"
-                        name="firstName"
-                        className="form-control"
-                        placeholder="First name"
-                        defaultValue={data.firstName}
-                        required
-                        onChange={handleChange}
-                    />
-                </div>
-        
-                <div className="mb-3">
-                    <label>Last name</label>
-                    <input 
-                        type="text" 
-                        name="lastName"
-                        className="form-control" 
-                        placeholder="Last name" 
-                        defaultValue={data.lastName}
-                        required
-                        onChange={handleChange}
-                    />
-                </div>
-        
-                <div className="mb-3">
-                    <label>Email address</label>
-                    <input
-                        type="email"
-                        name="email"
-                        className="form-control"
-                        placeholder="Enter email"
-                        defaultValue={data.email}
-                        required
-                        onChange={handleChange}
-                    />
-                </div>
-        
-                <div className="mb-3">
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        className="form-control"
-                        placeholder="Enter password"
-                        defaultValue={data.password}
-                        required
-                        onChange={handleChange}
-                    />
-                </div>
+            <div className="auth-wrapper">
+                <div className="auth-inner">
+                    <form onSubmit={handleSubmit}>
+                        <h3>Sign Up</h3>
+                
+                        <div className="mb-3">
+                            <label>First name</label>
+                            <input
+                                type="text"
+                                name="firstName"
+                                className="form-control"
+                                placeholder="First name"
+                                defaultValue={data.firstName}
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                
+                        <div className="mb-3">
+                            <label>Last name</label>
+                            <input 
+                                type="text" 
+                                name="lastName"
+                                className="form-control" 
+                                placeholder="Last name" 
+                                defaultValue={data.lastName}
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                
+                        <div className="mb-3">
+                            <label>Email address</label>
+                            <input
+                                type="email"
+                                name="email"
+                                className="form-control"
+                                placeholder="Enter email"
+                                defaultValue={data.email}
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
+                
+                        <div className="mb-3">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                className="form-control"
+                                placeholder="Enter password"
+                                defaultValue={data.password}
+                                required
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                {err && <div className="error_msg"> {err} </div>}
-        
-                <div className="d-grid">
-                    <button type="submit" className="btn btn-primary">
-                        Sign Up
-                    </button>
+                        {err && <div className="error_msg"> {err} </div>}
+                
+                        <div className="d-grid">
+                            <button type="submit" className="btn btn-primary">
+                                Sign Up
+                            </button>
+                        </div>
+                
+                        <p className="forgot-password text-right">
+                            Already registered? <a href="/login">Login</a>
+                        </p>
+                    </form>
                 </div>
-        
-                <p className="forgot-password text-right">
-                    Already registered? <a href="/login">Login</a>
-                </p>
-            </form>
+            </div>
         </div>
     )
 }

@@ -16,7 +16,7 @@ module.exports = function (router) {
             if (user.password == req.body.password) {
                 const token = user.generateAuthToken();
                 console.log(token);
-                res.status(200).send({ message: "Logged in successfully", data: token });
+                res.header('auth-token', token).status(200).send({ message: "Logged in successfully", data: token });
             } else {
                 res.status(404).send({ message: "Incorrect Password" });
             }

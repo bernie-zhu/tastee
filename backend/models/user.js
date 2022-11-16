@@ -15,11 +15,27 @@ var UserSchema = new mongoose.Schema({
     },
     password: {
         type: String
+    },
+    height: {
+        type: Number,
+        default: 1
+    },
+    weight: {
+        type: Number,
+        default: 1
+    },
+    age: {
+        type: Number,
+        default: 1
+    },
+    gender: {
+        type: String,
+        default: "male"
     }
-});
+})
 
 UserSchema.methods.generateAuthToken = function () {
-    const token = jwt.sign( {_id: this._id }, process.env.TOKEN_SECRET, { expiresIn: "7d" });
+    const token = jwt.sign( {_id: this._id }, process.env.TOKEN_SECRET, { expiresIn: "1hr" });
     return token;
 }
 
@@ -33,5 +49,19 @@ const validate = (data) => {
     return schema.validate(data);
 }
 
+const validateAll = (data) => {
+    const schema = Joi.object({
+        firstName: Joi.string().required().label("First Name"),
+        lastName: Joi.string().required().label("Last Name"),
+        email: Joi.string().email().required().label("Email"),
+        password: Joi.string().required().label("Password"),
+        height: Joi.number().integer().min(0).max(200).required().label("Height"),
+        weight: Joi.number().integer().min(0).max(1000).required().label("Weight"),
+        age: Joi.number().integer().min(0).max(150).required().label("Age"),
+        gender: Joi.string().required().label("Gender"),
+    });
+    return schema.validate(data);
+}
+
 const User = mongoose.model('User', UserSchema);
-module.exports = {User, validate};
+module.exports = {User, validate, validateAll};
