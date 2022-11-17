@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
+import HomeNav from "../../components/HomeNav";
 /* eslint-disable */
 
 const UserInfo = () => {
@@ -32,12 +35,24 @@ const UserInfo = () => {
     const [err, setErr] = useState("");
     const [success, setSuccess] = useState(false);
     const [errBool, setErrBool] = useState(false);
+    const [type, setType] = useState("password");
+    const [icon, setIcon] = useState(eyeOff);
 
     const handleChange = ({ currentTarget: input }) => {{
         setUserData({...userData, [input.name]: input.value });
         //console.log(newUserData);
         //console.log(userData);
     }};
+
+    const handleToggle = () => {
+        if (type == "password") {
+            setIcon(eye);
+            setType("text");
+        } else {
+            setIcon(eyeOff);
+            setType("password");
+        }
+    }
 
     const handleSubmit = async (err) => {
         err.preventDefault();
@@ -75,36 +90,7 @@ const UserInfo = () => {
     
     return (
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <Link className="navbar-brand" to={'/home'}>
-              Tastee
-            </Link>
-            <div className="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo02">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                    <Link className="nav-link" to={'/home'}>
-                        Home
-                    </Link>
-                </li>
-              </ul>
-              <ul className="nav navbar-nav ml-auto">
-                <li className="nav-item">
-                  <a className="nav-link">Hello, {userData.firstName} </a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-                    More
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a className="dropdown-item">User Information</a>
-                    <a className="dropdown-item" onClick={handleLogout}>Logout</a>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>  
+        <HomeNav />
 
         <div className="auth-wrapper">
                 <div className="auth-inner">
@@ -149,17 +135,22 @@ const UserInfo = () => {
                                 required
                             />
                         </div>
-                
-                        <div className="mb-3">
-                            <label>Password</label>
+
+                        <label>Password</label>
+                        <div className="mb-3 input-group">
                             <input
-                                type="password"
+                                type={type}
                                 name="password"
-                                className="form-control"
+                                className="form-control border-end-0"
                                 placeholder="Enter password"
                                 required
                                 onChange={handleChange}
                             />
+                            <span onClick={handleToggle} className="input-group-text bg-white" >
+                                <span className="bg-transparent">
+                                    <Icon icon={icon} size={15}/>
+                                </span>
+                            </span>
                         </div>
 
                         <div className="row mb-3">

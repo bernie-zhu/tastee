@@ -98,16 +98,16 @@ const Login = () => {
                         <label>Password</label>
                         <div className="mb-3 input-group">
                             <input
-                                    type={type}
-                                    name="password"
-                                    className="form-control border-right-0"
-                                    placeholder="Enter password"
-                                    defaultValue={data.password}
-                                    required
-                                    onChange={handleChange}
-                                />
-                            <span onClick={handleToggle} className="input-group-append bg-white" >
-                                <span className="input-group-text bg-transparent">
+                                type={type}
+                                name="password"
+                                className="form-control border-end-0"
+                                placeholder="Enter password"
+                                defaultValue={data.password}
+                                required
+                                onChange={handleChange}
+                            />
+                            <span onClick={handleToggle} className="input-group-text bg-white" >
+                                <span className="bg-transparent">
                                     <Icon icon={icon} size={15}/>
                                 </span>
                             </span>
