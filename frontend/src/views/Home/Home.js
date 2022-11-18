@@ -21,11 +21,10 @@ const Home = () => {
         {/* Whatever stuff you need here */}
         {/* <div className="auth-wrapper">
           <div className="auth-inner"> */}
-        <div className="container">
-          <Search />
+        <div className="body-wrapper">
           <Cuisines/>
-          <Vegetarian />
           <Trending />
+          <Vegetarian />
         </div>
         {/* </div>
         </div> */}

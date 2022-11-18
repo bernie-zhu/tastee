@@ -29,9 +29,9 @@ function Trending() {
     return (
         <div>
             <Wrapper>
-                <h3> Trending Recipes </h3>
+                <h3> Trending Picks </h3>
                 <Splide options={{
-                    perPage: 4,
+                    perPage: 3,
                     arrows: false,
                     pagination: false,
                     drag: "free",
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
-    min-height: 18rem;
+    min-height: 15rem;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
+import { GiKnifeFork } from "react-icons/gi";
 /* eslint-disable */
 
 const Login = () => {
@@ -59,6 +60,7 @@ const Login = () => {
             <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">
                     <Link className="navbar-brand" to={'/home'}>
+                        <GiKnifeFork />
                         Tastee
                     </Link>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">

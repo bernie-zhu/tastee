@@ -29,9 +29,9 @@ function Vegetarian() {
     return (
         <div>
             <Wrapper>
-                <h3> Popular Vegetarian Recipes </h3>
+                <h3> Our Vegetarian Picks </h3>
                 <Splide options={{
-                    perPage: 3,
+                    perPage: 4,
                     arrows: false,
                     pagination: false,
                     drag: "free",
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
-    min-height: 18rem;
+    min-height: 12rem;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;

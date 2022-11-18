@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { GiKnifeFork } from "react-icons/gi";
 /* eslint-disable */
 
 const Signup = () => {
@@ -40,6 +41,7 @@ const Signup = () => {
             <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">
                     <Link className="navbar-brand" to={'/'}>
+                        <GiKnifeFork />
                         Tastee
                     </Link>
 

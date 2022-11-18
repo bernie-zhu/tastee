@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 import HomeNav from "../../components/HomeNav";
-import Search from "../../components/Search";
-import Cuisines from "../../components/Cuisines";
 
 function Recipe() {
     let params = useParams();
@@ -24,15 +22,13 @@ function Recipe() {
     }, [params.id])
 
     return (
-        <motion.div className="container"
+        <motion.div
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
             <HomeNav />
-            <Search />
-            <Cuisines />
 
             <DetailWrapper>
                 <div>
@@ -51,7 +47,7 @@ function Recipe() {
                             <h3 dangerouslySetInnerHTML={{__html: details.summary }}></h3>
                             <h3 dangerouslySetInnerHTML={{__html: details.instructions }}></h3>
                         </div>
-                    )};
+                    )}
                     {activeTab === "ingredients" && (
                         <ul>
                             {details.extendedIngredients.map((ingredient) => (
@@ -60,7 +56,7 @@ function Recipe() {
                                 </li>
                             ))}
                         </ul>
-                    )};
+                    )}
                 </Info>
             </DetailWrapper>
         </motion.div>
@@ -68,37 +64,51 @@ function Recipe() {
 }
 
 const DetailWrapper = styled.div`
-    margin-top: 10rem;
-    margin-bottom: 5rem;
+    margin: 5% 10% 5% 10%;
+    padding: 3% 5% 2% 5%;
+    background: white;
     display: flex;
+    border-radius: 2rem;
 
     .active {
         background: linear-gradient(35deg, #494949, #313131);
         color: white;
     }
-    h2 {
+    h4 {
+        width: 80%;
+        margin-top: 1rem;
+        //margin-right: 1rem;
+    }
+    img {
+        margin-top: 1rem;
+        transform: scale(.75) translate(-17%, -15%); 
+    }
+    h3 {
         margin-bottom: 2rem;
+        font-size: 1.25rem;
     }
     li {
-        font-size: 1.2rem;
+        font-size: 1rem;
         line-height: 2.5rem;
     }
     ul {
-        margin-top: 2rem;
+        margin-top: .5rem;
     }
 `
 
 const Button = styled.button`
-    padding: 1rem 2rem;
+    padding: .75rem 1.5rem;
     color: #313131;
     background: white;
     border: 2px solid black;
     margin-right: 2rem;
     font-weight: 500;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
 `
 
 const Info = styled.div`
-    margin-left: 10rem;
+    margin-left: 1rem;
 `
 
 export default Recipe
