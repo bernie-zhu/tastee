@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import axios from 'axios';
 import HomeNav from "../../components/HomeNav";
-import Cuisines from "../../components/Cuisines";
 
 function Searched() {
     let params = useParams();
@@ -27,23 +26,31 @@ function Searched() {
             transition={{ duration: 0.5 }}
         >
             <HomeNav />
-            <Cuisines />
-            <Grid>
-                {searched.map((item) => {
-                    return (
-                        <Link to={"/recipe/" + item.id}  key={item.id}> 
-                            <Card>
-                                <img src={item.image} alt="" />
-                                <h4>{item.title}</h4>
-                            </Card>
-                        </Link>
-                    )
-                })}
-            </Grid>
+            <Wrapper>
+                <h3> Search results for "{params.search}": </h3>
+                <Grid>
+                    {searched.map((item) => {
+                        return (
+                            <Link to={"/recipe/" + item.id}  key={item.id}> 
+                                <Card>
+                                    <img src={item.image} alt="" />
+                                    <h4>{item.title}</h4>
+                                </Card>
+                            </Link>
+                        )
+                    })}
+                </Grid>
+            </Wrapper>
         </motion.div>
     );
 };
 
+const Wrapper = styled.div`
+    margin-top: 5rem;
+    h3 {
+        margin-bottom: 1rem;
+    }
+`;
 const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -55,6 +62,8 @@ const Card = styled.div`
     img {
         width: 100%;
         border-radius: 2rem;
+        height: 100%;
+        object-fit: cover;
     }
     a {
         text-decoration: none;

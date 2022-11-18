@@ -3,7 +3,6 @@ import Trending from "../../components/Trending";
 import Vegetarian from "../../components/Vegetarian";
 import Cuisines from "../../components/Cuisines";
 import HomeNav from "../../components/HomeNav";
-import Search from "../../components/Search";
 import { motion } from "framer-motion";
 /* eslint-disable */
 

@@ -12,7 +12,7 @@ function Recipe() {
 
     const getDetails = async () => {
         const { data } = await axios.get(`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
-        //console.log(data);
+        console.log(data);
         setDetails(data);
     }
 
@@ -32,8 +32,11 @@ function Recipe() {
 
             <DetailWrapper>
                 <div>
-                    <h4>{details.title}</h4>
+                    <h4>{details.title} - 
+                        <a target="_blank" rel="noopener noreferrer" href={details.sourceUrl}> Recipe </a>
+                    </h4>
                     <img src={details.image} alt="" />
+                    
                 </div>
                 <Info>
                     <Button className={activeTab === "instructions" ? "active" : ""} onClick={() => setActiveTab("instructions")}> 
