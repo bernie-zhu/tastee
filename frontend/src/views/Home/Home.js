@@ -3,6 +3,7 @@ import Trending from "../../components/Trending";
 import Vegetarian from "../../components/Vegetarian";
 import Cuisines from "../../components/Cuisines";
 import HomeNav from "../../components/HomeNav";
+import Ingredients from "../../components/Ingredients";
 import { motion } from "framer-motion";
 /* eslint-disable */
 
@@ -16,11 +17,11 @@ const Home = () => {
         transition={{ duration: 0.5 }}
       >
         <HomeNav />
-
         {/* Whatever stuff you need here */}
         {/* <div className="auth-wrapper">
           <div className="auth-inner"> */}
         <div className="body-wrapper">
+          <Ingredients />
           <Cuisines/>
           <Trending />
           <Vegetarian />
