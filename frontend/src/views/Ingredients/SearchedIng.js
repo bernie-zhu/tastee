@@ -15,7 +15,7 @@ function Searched() {
     }
 
     useEffect(() => {
-        getSearched(params.ingredient.replace('+', ","));
+        getSearched(params.ingredient.replaceAll('+', ","));
     }, [params.ingredient]);
     console.log(searched)
     return (
@@ -27,7 +27,7 @@ function Searched() {
         >
             <HomeNav />
             <Wrapper>
-                <h3> Search results for "{params.ingredient.replace('+', ", ").replace('-', ' ')}": </h3>
+                <h3> Search results for the ingredients: {params.ingredient.replaceAll('+', ", ")} </h3>
                 <Grid>
                     {searched.map((item) => {
                         return (
