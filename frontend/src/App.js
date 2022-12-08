@@ -29,7 +29,7 @@ function App() {
             <Route path="/userinfo" element={<Navigate replace to="/login" />} />
             <Route path="/cuisine/:type" element={<Cuisine />} />
             <Route path="/searched/:search" element={<Searched />} />
-            <Route path="/searched+ingredient/:ingredient" element={<Ingredients />} />
+            <Route path="/searched-ingredient/:ingredient" element={<Ingredients />} />
             <Route path="/recipe/:id" element={<Recipe />} />
           </Routes>
         </AnimatePresence>
