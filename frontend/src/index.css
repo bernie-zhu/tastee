@@ -112,8 +112,14 @@ body, html, .App, #root, .auth-wrapper {
   text-align: center;
 }
 
+.auth-inner h4 {
+  text-align: center;
+  font-weight: lighter;
+}
+
 .health_fact_box {
   width: 100%;
+  padding-top: 10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -121,7 +127,60 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .health_fact_box ul {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  list-style: none;
+}
+
+.health_fact_box ul li {
+  padding: 0px 2px;
+  margin: 5px 0px;
+  border-radius: 5px;
+}
+
+.health_fact_box ul li label {
   /* width: 50%; */
-  font-size: 0.5em;
+  font-size: 0.9em;
   font-weight: lighter;
+}
+
+.underweight {
+  background-color: #e7ff31;
+}
+
+.normal_weight {
+  background-color: #46ff31;
+}
+
+.overweight {
+  background-color: #ffa231;
+}
+
+.obese {
+  background-color: #ff3131;
+}
+
+.activity_form {
+  padding-top: 20px;
+  width: 100%;
+}
+
+.activity_form h4 {
+  font-size: 1em;
+  text-align: left;
+}
+
+.activity_form select {
+  width: 100%;
+  /* border: none; */
+  /* -webkit-appearance:caret;
+  -moz-appearance: none;
+  appearance: none; */
+  /* background: #7f7d7d; */
+}
+
+.activity_form label {
+  padding-top: 20px;
+  font-size: 1.2em;
 }
