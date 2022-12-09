@@ -68,7 +68,7 @@ function HomeNav() {
                             </Link>
                         </li>
                         <li className="nav-item active">
-                            <Link className="nav-link" to={'/home'}>
+                            <Link className="nav-link" to={'/healthinfo'}>
                                 Health Info
                             </Link>
                         </li>
