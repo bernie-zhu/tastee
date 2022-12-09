@@ -111,3 +111,17 @@ body, html, .App, #root, .auth-wrapper {
   border-radius: 5px;
   text-align: center;
 }
+
+.health_fact_box {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.health_fact_box ul {
+  /* width: 50%; */
+  font-size: 0.5em;
+  font-weight: lighter;
+}
