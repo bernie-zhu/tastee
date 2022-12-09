@@ -67,6 +67,11 @@ function HomeNav() {
                                 Home
                             </Link>
                         </li>
+                        <li className="nav-item active">
+                            <Link className="nav-link" to={'/home'}>
+                                Health Info
+                            </Link>
+                        </li>
                     </ul>
                     <ul className="nav navbar-nav ml-auto">
                         <li className="nav-item">
