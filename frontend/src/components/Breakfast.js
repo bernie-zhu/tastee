@@ -5,33 +5,33 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom";
 
-function Trending() {
+function Breakfast() {
 
-    const [trending, setTrending] = useState([]);
+    const [breakfast, setBreakfast] = useState([]);
 
-    const getTrending = async () => {
-        const cachedTrending = localStorage.getItem("trending");
+    const getBreakfast = async () => {
+        const cachedBreakfast = localStorage.getItem("breakfast");
 
-        if (cachedTrending) {
-            setTrending(JSON.parse(cachedTrending));
+        if (cachedBreakfast) {
+            setBreakfast(JSON.parse(cachedBreakfast));
         } else {
-            const { data } = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`);
+            const { data } = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags="breakfast"&number=10`);
             //console.log(data);
-            localStorage.setItem("trending", JSON.stringify(data.recipes));
-            setTrending(data.recipes);
+            localStorage.setItem("breakfast", JSON.stringify(data.recipes));
+            setBreakfast(data.recipes);
         }
     }
 
     useEffect(() => {
-        getTrending();
+        getBreakfast();
     }, []);
 
     return (
         <div>
             <Wrapper>
-                <h3> Trending Picks </h3>
+                <h3> Our Breakfast Picks </h3>
                 <Splide options={{
-                    perPage: 3,
+                    perPage: 4,
                     arrows: false,
                     pagination: false,
                     drag: "free",
@@ -40,12 +40,15 @@ function Trending() {
                         600: {
                             perPage: 1
                         },
-                        1024: {
+                        800: {
                             perPage: 2
+                        },
+                        1024: {
+                            perPage: 3
                         }
                     }
                 }}>
-                    {trending.map((recipe) => {
+                    {breakfast.map((recipe) => {
                         return (
                             <SplideSlide key={recipe.id}>
                                 <Card>
@@ -69,7 +72,7 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
-    min-height: 15rem;
+    min-height: 12rem;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;
@@ -109,5 +112,4 @@ const Gradient = styled.div`
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
 
-
-export default Trending;
+export default Breakfast;

@@ -12,7 +12,7 @@ function Recipe() {
 
     const getDetails = async () => {
         const { data } = await axios.get(`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
-        console.log(data);
+        //console.log(data);
         setDetails(data);
     }
 
@@ -71,7 +71,12 @@ const DetailWrapper = styled.div`
     padding: 3% 5% 2% 5%;
     background: white;
     display: flex;
+    //flex-wrap: wrap;
     border-radius: 2rem;
+
+    @media (max-width: 1200px) {
+        flex-wrap: wrap;
+    }
 
     .active {
         background: linear-gradient(35deg, #494949, #313131);

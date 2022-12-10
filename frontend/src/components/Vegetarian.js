@@ -15,7 +15,7 @@ function Vegetarian() {
         if (cachedVegetarian) {
             setVegetarian(JSON.parse(cachedVegetarian));
         } else {
-            const { data } = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags="vegetarian"&number=10`);
+            const { data } = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags="vegetarian,main course"&number=10`);
             //console.log(data);
             localStorage.setItem("vegetarian", JSON.stringify(data.recipes));
             setVegetarian(data.recipes);
@@ -35,7 +35,18 @@ function Vegetarian() {
                     arrows: false,
                     pagination: false,
                     drag: "free",
-                    gap: "5rem"
+                    gap: "5rem",
+                    breakpoints: {
+                        600: {
+                            perPage: 1
+                        },
+                        800: {
+                            perPage: 2
+                        },
+                        1024: {
+                            perPage: 3
+                        }
+                    }
                 }}>
                     {vegetarian.map((recipe) => {
                         return (

@@ -1,5 +1,5 @@
 import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
-import { GiNoodles, GiChopsticks } from "react-icons/gi";
+import { GiNoodles, GiChopsticks, GiBowlOfRice, GiTacos, GiDonerKebab, GiCroissant } from "react-icons/gi";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -18,10 +18,27 @@ function Cuisines() {
             <GiNoodles/>
             <h4> Thai </h4>
         </StyledLink>
+        <StyledLink to={"/cuisine/Mexican"}>
+            <GiTacos/>
+            <h4> Mexican </h4>
+        </StyledLink>
+        <StyledLink to={"/cuisine/French"}>
+            <GiCroissant/>
+            <h4> French </h4>
+        </StyledLink>
         <StyledLink to={"/cuisine/Japanese"}>
             <GiChopsticks/>
             <h4> Japanese </h4>
         </StyledLink>
+        <StyledLink to={"/cuisine/Mediterranean"}>
+            <GiDonerKebab/>
+            <h4> Mediterranean </h4>
+        </StyledLink>
+        <StyledLink to={"/cuisine/Chinese"}>
+            <GiBowlOfRice/>
+            <h4> Chinese </h4>
+        </StyledLink>
+        
     </List>
   )
 }
@@ -30,6 +47,9 @@ const List = styled.div`
   display: flex;
   justify-content: center;
   margin: 4rem 0rem 2rem 0rem;
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+  }
 `;
 const StyledLink = styled(NavLink)`
     display: flex;

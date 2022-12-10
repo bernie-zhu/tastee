@@ -71,7 +71,17 @@ const MealPlan = () => {
         document.getElementsByClassName("mealplan_div")[0].style.display = "block";
         try {
             const { data } = await axios.get(`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=${mealPlanSettings.timeFrame}&targetCalories=${mealPlanSettings.calroieCount}&diet=${mealPlanSettings.diet}`);
+            
+            for (let i = 0; i < data.meals.length; i++) {
+                let meal = data.meals[i];
+                //console.log(meal.id);
+                const recipe = await axios.get(`https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
+                //console.log(recipe.data);
+                data.meals[i]["image"] = recipe.data.image;
+                //console.log(data.meals[i]);
+            }
             setSearch(data)
+           // console.log(data)
             // console.log(data.nutrients.calories)
         } catch(e) {
             console.log(e)
@@ -128,7 +138,7 @@ const MealPlan = () => {
                         </div>
                     </form>
                     <div className="mealplan_div">
-                        <h3>Meal Plan Nutirtional Info:</h3>
+                        <h3>Meal Plan Nutritional Info:</h3>
                         <div className="mealplan_nutrional_div">
                             {Object.keys(searched.nutrients).map((key, val) => {
                                 return (
@@ -138,18 +148,21 @@ const MealPlan = () => {
                         </div>
                         <h3>Meals:</h3>
                         <div className="mealplan_meals_div">
-                            <ul>
+                            <Grid>
                                 {Object.keys(searched.meals).map((key, val) => {
                                     return (
                                         <Link to={"/recipe/" + searched.meals[key].id} key={searched.meals[key].id}> 
-                                            <li>
-                                            <label>{searched.meals[key].title}</label>
-                                            </li>
-                                            
+                                            {/* <li>
+                                            <label>{searched.meals[key].image}</label>
+                                            </li> */}
+                                            <Card>
+                                                <img src={searched.meals[key].image} alt="" />
+                                                <h4>{searched.meals[key].title}</h4>
+                                            </Card>
                                         </Link>
                                     )
                                 })}
-                            </ul>
+                            </Grid>
                             
                         </div>
                     </div>
