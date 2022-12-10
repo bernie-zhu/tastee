@@ -123,7 +123,7 @@ const MealPlan = () => {
                         </div>
                         <div className="submit_div">
                             <button type="submit" className="btn btn-primary">
-                                Generate A Meal Plan
+                                Re/Generate A Meal Plan
                             </button>
                         </div>
                     </form>
@@ -143,9 +143,8 @@ const MealPlan = () => {
                                     return (
                                         <Link to={"/recipe/" + searched.meals[key].id} key={searched.meals[key].id}> 
                                             <li>
-                                            <label>{searched.meals[key].title}</label>
+                                                <label>{searched.meals[key].title}</label>
                                             </li>
-                                            
                                         </Link>
                                     )
                                 })}
