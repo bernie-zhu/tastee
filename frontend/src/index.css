@@ -45,6 +45,14 @@ body, html, .App, #root, .auth-wrapper {
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
 
+.body-inner {
+  padding-top: 100px;
+}
+
+.body-inner h3 {
+  text-align: center;
+}
+
 .navbar-light {
   background-color: #ffffff;
   /* box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2); */
@@ -119,7 +127,7 @@ body, html, .App, #root, .auth-wrapper {
 
 .health_fact_box {
   width: 100%;
-  padding-top: 10px;
+  padding-top: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -162,7 +170,7 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .activity_form {
-  padding-top: 20px;
+  padding-top: 30px;
   width: 100%;
 }
 
@@ -184,3 +192,44 @@ body, html, .App, #root, .auth-wrapper {
   padding-top: 20px;
   font-size: 1.2em;
 }
+
+.mealplan_form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings_div {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.setting_element {
+  width: 25%;
+  padding: 10px 0px;
+}
+
+.submit_div {
+  padding-top: 20px;
+
+}
+
+.mealplan_div {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px black solid;
+}
+
+.mealplan_div h3 {
+  text-align: left;
+}
+
+.mealplan_nutrional_div {
+
+}
+
+

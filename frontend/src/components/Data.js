@@ -1,3 +1,42 @@
+export const bmr_values = [
+    {label: "Mifflin-St Jeor Equation", value: [
+        {label: "Male", values: [10, 6.25, -5, 5]}, 
+        {label: "Female", values: [10, 6.25, -5, -161]}
+    ]},
+    {label: "Revised Harris-Benedict Equation", value: [
+        {label: "Male", values: [13.397, 4.799, 5.677, 88.362]}, 
+        {label: "Female", values: [9.247, 3.098, -4.33, 447.593]}
+    ]},
+    {label: "Katch-McArdle Formula", values: [370, 21.6]},
+]
+
+export const physical_factor = [
+    {value: 1.2, option_desc: "Sedentary", label: "Sedentary: little or no exercise"},
+    {value: 1.37, option_desc: "Somewhat", label: "Exercise 1-3 times/week"},
+    {value: 1.55, option_desc: "Moderate", label: "Exercise 4-5 times/week"},
+    {value: 1.725, option_desc: "Very", label: "Daily exercise or intense exercise 3-4 times/week"},
+    {value: 1.9, option_desc: "Extreme", label: "Intense exercise 6-7 times/week"},
+]
+
+export const timeFrame_options = [
+    {value: "day", label: "Day"},
+    {value: "week", label: "Week"},
+]
+
+export const diet_options = [
+    {value: "Gluten Free", label: "Gluten Free"},
+    {value: "Ketogenic", label: "Ketogenic"},
+    {value: "Vegetarian", label: "Vegetarian"},
+    {value: "Lacto-Vegetarian", label: "Lacto-Vegetarian"},
+    {value: "Ovo-Vegetarian", label: "Ovo-Vegetarian"},
+    {value: "Vegan", label: "Vegan"},
+    {value: "Pescetarian", label: "Pescetarian"},
+    {value: "Paleo", label: "Paleo"},
+    {value: "Primal", label: "Primal"},
+    {value: "Low FODMAP", label: "Low FODMAP"},
+    {value: "Whole30", label: "Whole30"},
+]
+
 export const options = [
     { value: 'salt', label: 'salt' },
     { value: 'olive oil', label: 'olive oil' },

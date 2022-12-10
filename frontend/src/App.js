@@ -12,6 +12,7 @@ import Recipe from "./views/Recipe/Recipe";
 import Ingredients from './views/Ingredients/SearchedIng';
 import { AnimatePresence } from "framer-motion";
 import HealthInfo from './views/HealthInfo/HealthInfo';
+import MealPlan from './views/MealPlan/MealPlan';
 
 function App() {
   const user = localStorage.getItem("token");
@@ -30,6 +31,7 @@ function App() {
             <Route path="/userinfo" element={<Navigate replace to="/login" />} />
             {user && <Route path="/healthinfo" exact element={<HealthInfo />}/>}
             <Route path="/healthinfo" element={<Navigate replace to="/login" />} />
+            <Route path="/mealplan" exact element={<MealPlan />}/>
             <Route path="/cuisine/:type" element={<Cuisine />} />
             <Route path="/searched/:search" element={<Searched />} />
             <Route path="/searched-ingredient/:ingredient" element={<Ingredients />} />
