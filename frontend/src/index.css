@@ -219,6 +219,7 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .mealplan_div {
+  display: none;
   margin-top: 40px;
   padding-top: 10px;
   border-top: 1px black solid;
@@ -229,10 +230,6 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .mealplan_nutrional_div {
-
-}
-
-.mealplan_nutrients_list {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -240,8 +237,17 @@ body, html, .App, #root, .auth-wrapper {
   padding: 10px 0px;
 }
 
-.mealplan_nutrients_list label {
+.mealplan_nutrients_div label {
   padding: 0px 10px;
+}
+
+.mealplan_meals_div ul {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px 0px;
+  margin-left: 20px;
 }
 
 

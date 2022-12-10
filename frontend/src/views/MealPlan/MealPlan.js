@@ -68,6 +68,7 @@ const MealPlan = () => {
 
     const handleFormSubmit = async (err) => {
         err.preventDefault();
+        document.getElementsByClassName("mealplan_div")[0].style.display = "block";
         try {
             const { data } = await axios.get(`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=${mealPlanSettings.timeFrame}&targetCalories=${mealPlanSettings.calroieCount}&diet=${mealPlanSettings.diet}`);
             setSearch(data)
@@ -129,29 +130,27 @@ const MealPlan = () => {
                     <div className="mealplan_div">
                         <h3>Meal Plan Nutirtional Info:</h3>
                         <div className="mealplan_nutrional_div">
-                            <div className="mealplan_nutrients_list">
-                                {Object.keys(searched.nutrients).map((key, val) => {
-                                    return (
-                                        <label key={val}>{key}: {searched.nutrients[key]}</label>
-                                    )
-                                })}
-                            </div>
-                            {/* <label>Calories: {searched.nutrients }</label> */}
-                            {/* <label>Protein: </label>
-                            <label>Fat: </label>
-                            <label>Carbs: </label> */}
-                            {/* <label>{searched}</label> */}
-                            {Object.keys(searched.meals).map((key, val) => {
+                            {Object.keys(searched.nutrients).map((key, val) => {
                                 return (
-                                    <Link to={"/recipe/" + searched.meals[key].id} key={searched.meals[key].id}> 
-                                        <label><h4>{searched.meals[key].title}</h4></label>
-                                        {/* <Card>
-                                            <img src={searched.meals[key].sourceUrl} alt="" />
-                                            <h4>{searched.meals[key].title}</h4>
-                                        </Card> */}
-                                    </Link>
+                                    <label key={val}>{key}: {searched.nutrients[key]}</label>
                                 )
                             })}
+                        </div>
+                        <h3>Meals:</h3>
+                        <div className="mealplan_meals_div">
+                            <ul>
+                                {Object.keys(searched.meals).map((key, val) => {
+                                    return (
+                                        <Link to={"/recipe/" + searched.meals[key].id} key={searched.meals[key].id}> 
+                                            <li>
+                                            <label>{searched.meals[key].title}</label>
+                                            </li>
+                                            
+                                        </Link>
+                                    )
+                                })}
+                            </ul>
+                            
                         </div>
                     </div>
                 </div>
