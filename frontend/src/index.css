@@ -232,4 +232,16 @@ body, html, .App, #root, .auth-wrapper {
 
 }
 
+.mealplan_nutrients_list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+.mealplan_nutrients_list label {
+  padding: 0px 10px;
+}
+
 

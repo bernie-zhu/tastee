@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Select from 'react-select'
-import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import HomeNav from "../../components/HomeNav";
 import { timeFrame_options, diet_options } from "../../components/Data";
 /* eslint-disable */
@@ -26,7 +27,10 @@ const MealPlan = () => {
         diet: diet_options[diet_options.length-1]
     })
 
-    const [searched, setSearch] = useState([])
+    const [searched, setSearch] = useState({
+        meals: [],
+        nutrients: {}
+    })
 
     const getUser = async () => {
         const url = "http://localhost:4000/api/userinfo";
@@ -37,15 +41,9 @@ const MealPlan = () => {
     }
   
     useEffect(() => {
-    // console.log("called")
-    getUser();
+        // console.log("called")
+        getUser();
     }, []);
-
-    const [err, setErr] = useState("");
-    const [success, setSuccess] = useState(false);
-    const [errBool, setErrBool] = useState(false);
-    const [type, setType] = useState("password");
-    const [icon, setIcon] = useState(eyeOff);
 
     const handleCalorieChange = ({ currentTarget: input }) => {
         // console.log("change")
@@ -73,7 +71,7 @@ const MealPlan = () => {
         try {
             const { data } = await axios.get(`https://api.spoonacular.com/mealplanner/generate?apiKey=${process.env.REACT_APP_API_KEY}&timeFrame=${mealPlanSettings.timeFrame}&targetCalories=${mealPlanSettings.calroieCount}&diet=${mealPlanSettings.diet}`);
             setSearch(data)
-            console.log(data.nutrients.calories)
+            // console.log(data.nutrients.calories)
         } catch(e) {
             console.log(e)
         }
@@ -131,14 +129,27 @@ const MealPlan = () => {
                     <div className="mealplan_div">
                         <h3>Meal Plan Nutirtional Info:</h3>
                         <div className="mealplan_nutrional_div">
-                            {/* <label>Calories: {Object.keys(searched) }</label> */}
+                            <div className="mealplan_nutrients_list">
+                                {Object.keys(searched.nutrients).map((key, val) => {
+                                    return (
+                                        <label key={val}>{key}: {searched.nutrients[key]}</label>
+                                    )
+                                })}
+                            </div>
+                            {/* <label>Calories: {searched.nutrients }</label> */}
                             {/* <label>Protein: </label>
                             <label>Fat: </label>
                             <label>Carbs: </label> */}
                             {/* <label>{searched}</label> */}
-                            {Object.keys(searched).map((key, val) => {
+                            {Object.keys(searched.meals).map((key, val) => {
                                 return (
-                                    <label key={val}>{searched[val]}</label>
+                                    <Link to={"/recipe/" + searched.meals[key].id} key={searched.meals[key].id}> 
+                                        <label><h4>{searched.meals[key].title}</h4></label>
+                                        {/* <Card>
+                                            <img src={searched.meals[key].sourceUrl} alt="" />
+                                            <h4>{searched.meals[key].title}</h4>
+                                        </Card> */}
+                                    </Link>
                                 )
                             })}
                         </div>
@@ -147,6 +158,27 @@ const MealPlan = () => {
             </div>
       </div>
     )
-};
+}
+
+const Grid = styled.div`
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 3rem;
+`;
+const Card = styled.div`
+    img {
+        width: 100%;
+        border-radius: 2rem;
+    }
+    a {
+        text-decoration: none;
+    }
+    h4 {
+        padding: 1rem;
+        font-size: 1rem;
+        text-decoration: none;
+    }
+`;
 
 export default MealPlan;
