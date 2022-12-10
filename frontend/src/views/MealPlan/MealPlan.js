@@ -152,9 +152,6 @@ const MealPlan = () => {
                                 {Object.keys(searched.meals).map((key, val) => {
                                     return (
                                         <Link to={"/recipe/" + searched.meals[key].id} key={searched.meals[key].id}> 
-                                            {/* <li>
-                                            <label>{searched.meals[key].image}</label>
-                                            </li> */}
                                             <Card>
                                                 <img src={searched.meals[key].image} alt="" />
                                                 <h4>{searched.meals[key].title}</h4>
