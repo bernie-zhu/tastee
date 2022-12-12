@@ -21,7 +21,7 @@ const UserInfo = () => {
     })
 
     const getUser = async () => {
-        const url = "http://localhost:4000/api/userinfo";
+        const url = "https://tastee-cs409.herokuapp.com/api/userinfo";
         const { data } = await axios.get(url, config);
         //console.log(data);
         setUserData(data.data);
@@ -59,7 +59,7 @@ const UserInfo = () => {
 
         try {
             //console.log("submit1");
-            const url = "http://localhost:4000/api/userinfo";
+            const url = "https://tastee-cs409.herokuapp.com/api/userinfo";
             //console.log("submit2");
             //console.log(config)
             const { data: res } = await axios.put(url, userData, config);
