@@ -1,6 +1,9 @@
 import React from "react";
 import Trending from "../../components/Trending";
+import Breakfast from "../../components/Breakfast";
+import Beverage from "../../components/Beverage";
 import Vegetarian from "../../components/Vegetarian";
+import Dessert from "../../components/Dessert";
 import Cuisines from "../../components/Cuisines";
 import HomeNav from "../../components/HomeNav";
 import Ingredients from "../../components/Ingredients";
@@ -24,7 +27,10 @@ const Home = () => {
           <Ingredients />
           <Cuisines/>
           <Trending />
+          <Breakfast />
+          <Beverage />
           <Vegetarian />
+          <Dessert />
         </div>
         {/* </div>
         </div> */}

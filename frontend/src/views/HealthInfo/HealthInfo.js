@@ -3,6 +3,7 @@ import axios from "axios";
 import Select from 'react-select'
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import HomeNav from "../../components/HomeNav";
+// eslint-disable-next-line
 import { bmr_values } from "../../components/Data";
 /* eslint-disable */
 

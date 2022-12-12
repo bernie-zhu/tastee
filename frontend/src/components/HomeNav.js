@@ -50,6 +50,9 @@ function HomeNav() {
         localStorage.removeItem("token");
         localStorage.removeItem("trending");
         localStorage.removeItem("vegetarian");
+        localStorage.removeItem("beverage");
+        localStorage.removeItem("breakfast");
+        localStorage.removeItem("dessert");
         window.location.reload();
     }
 
