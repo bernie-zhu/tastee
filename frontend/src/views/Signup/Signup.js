@@ -25,7 +25,7 @@ const Signup = () => {
         err.preventDefault();
 
         try {
-            const url = "http://localhost:4000/api/signup";
+            const url = "https://tastee-cs409.herokuapp.com/api/signup";
             const { data: res } = await axios.post(url, data);
             navigate("/login");
             console.log(res.message);

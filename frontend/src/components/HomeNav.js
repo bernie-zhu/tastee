@@ -35,7 +35,7 @@ function HomeNav() {
     }
 
     const getUser = async () => {
-      const url = "http://localhost:4000/api/home";
+      const url = "https://tastee-cs409.herokuapp.com/api/home";
       const { data } = await axios.get(url, config);
       //console.log(data.data);
       setUser(data.data);

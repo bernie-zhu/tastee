@@ -61,7 +61,7 @@ const HealthInfo = () => {
     }
 
     const getUser = async () => {
-        const url = "http://localhost:4000/api/userinfo";
+        const url = "https://tastee-cs409.herokuapp.com/api/userinfo";
         const { data } = await axios.get(url, config);
         //console.log(data);
         setUserData(data.data);

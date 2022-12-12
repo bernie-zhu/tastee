@@ -40,7 +40,7 @@ const Login = () => {
         err.preventDefault();
 
         try {
-            const url = "http://localhost:4000/api/login";
+            const url = "https://tastee-cs409.herokuapp.com/api/login";
             const { data: res } = await axios.post(url, data);
             localStorage.setItem("token", res.data);
             window.location = "/home";
